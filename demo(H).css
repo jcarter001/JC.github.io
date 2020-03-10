@@ -1,0 +1,283 @@
+body /* Tag selector */ { 
+    background-color: wheat;
+}
+
+/* Specificity cascade: more-specific selectors override less-specific selectors */
+
+#phone /* ID selector */ {
+    color: #e7c16e;
+    background-color: #1b1c1d;
+}
+
+.purple li:first-child /* Class selector combined with ancestor selector and a pseudoclass */{
+    color: inherit;
+}
+
+
+.purple li /* Class selector combined with ancestor selector */ {
+    color: #080808;
+}
+
+/* More specific than just ul li */
+.gold li /* Class selector combined with ancestor selector */ {
+    color: #080808;
+}
+
+/* More specific than just li */
+ul li /* Ancestor selector */ {
+    color: blue;
+}
+
+.gold li:last-child {
+    color: green;
+}
+
+/* More specific than just li */
+ul li /* Ancestor selector */ {
+    background-color: rgb(235, 231, 225);
+}
+
+
+/* Inheritance: descendants can override inherited values */
+.purple /* Tag Class selector */ {
+    background-color: #73d6f5;
+}
+
+/* Inheritance: descendants can override inherited values */
+.gold /* Class selector */ {
+    background-color: #73d6f5;
+}
+
+/** POPUP MENU **/
+/* Hidden when not in use */
+.popup li {
+    display: none;
+}
+
+/* Make it show up when wanted */
+.popup:hover li { /* :hover pseudoclass in the selector */
+    display: list-item;
+}
+
+.yes {
+    font-family: "Georgia", 'New Century Schoolbook', serif;
+}
+
+.no {
+    font-family: "Garamond", serif;
+}
+
+/** FONT FAMILIES **/
+/* The browser will use the first family in the list that's available.
+   Always end your list with one of the generic families, so there's
+   *something* the browser can use. */
+.happy {
+    font-family: "Western", "Comic Sans", fantasy;
+}
+
+.up {
+    font-family: 'Zapf Chancery', cursive;
+    text-decoration: underline;
+}
+
+.down {
+    font-family: "Courier", monospace;
+    text-decoration: line-through;
+}
+
+.lots {
+    font-weight: bolder;
+}
+
+.plenty {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-weight: lighter;
+}
+
+.want {
+    font-family: 'Helvetica Narrow', 'Arial Narrow', sans-serif;
+    font-weight: bolder;
+}
+
+/* Font Style */
+.booktitle {
+    font-style: italic;
+}
+
+/* Font variant */
+.acronym {
+    font-variant: all-small-caps;
+    font-size: larger;
+}
+
+/* Text property (others are used above) */
+.poetry {
+    white-space: pre-line;
+    margin-bottom: 0;
+}
+
+.direction {
+    font-style: italic;
+    font-weight: lighter;
+    font-size: smaller;
+}
+
+.attribution {
+    margin-top: 0;
+    padding-top: 0;
+    text-indent: 15%;
+    font-weight: lighter;
+    font-size: smaller;
+}
+
+.transform {
+    text-transform: capitalize;
+}
+
+/** LIST STYLES **/
+.styled-ul {
+    list-style-type: circle;
+}
+
+.styled-ul li:first-child {
+    list-style-type: disc;
+}
+
+.styled-ul li:last-child {
+    list-style-type: square;
+}
+
+.styled-ol li:first-child {
+    list-style-type: upper-roman;
+}
+
+.styled-ol li:nth-child(2) {
+    list-style-type: lower-roman;
+}
+
+.styled-ol li:nth-child(4) {
+    list-style-type: upper-alpha;
+}
+
+.styled-ol li:nth-child(5) {
+    list-style-type: lower-alpha;
+}
+
+.styled-ol li:nth-child(6) {
+    list-style-type: none;
+}
+.styled-ol li:nth-child(7) {
+    list-style-type: decimal-leading-zero;
+}
+
+/* Make outlines */
+ol.outline {
+    list-style-type: upper-roman;
+}
+
+.outline > li > ol {
+    list-style-type: upper-alpha;
+}
+
+.outline > li > ol > li > ol {
+    list-style-type: decimal;
+}
+
+.outline > li > ol > li > ol > li > ol {
+    list-style-type: lower-alpha;
+}
+
+.outline > li > ol > li > ol > li > ol > li > ol {
+    list-style-type: lower-roman;
+}
+
+/** BOXES AND BORDERS **/
+
+.purple {
+    /* Note that the background color does *not* cover the margin. */
+    margin-right: 3em;
+}
+
+.purple > li:nth-last-child(2) { /* Second-to-last item on the list */
+    border: thin solid;
+    padding: .5em;
+    background-color: pink;
+}
+
+table {
+    border: solid;
+}
+
+tr:first-child th {
+    border-bottom-style: double;
+}
+
+tr > :first-child {
+    border-right: thin solid;
+}
+
+td:last-of-type {
+    border-left: thin dotted;
+}
+
+tr:last-child td:not(:nth-of-type(1)) {
+    border-top: thin dotted;
+}
+
+td {
+    padding-top: 2.0ex;
+    padding-right: 1.0em;
+    padding-bottom: 2.0em;
+    padding-left: 1.0em;
+}
+
+/** DISPLAY AND VISIBILITY **/
+
+/* display: none makes it as if the element simply didn't exist */
+.outline > li > ol > li > ol > li:nth-child(2) > ol > li > ol > li {
+    display: none;
+}
+
+/* visibility:hidden doesn't *draw* the element, but does leave space for it. */
+.outline > li > ol > li > ol > li:nth-child(1) > ol > li:last-child > ol > li {
+    visibility: hidden;
+}
+
+/* display: making a list not look like a list */
+.gold > li {
+    display: inline;
+}
+
+.gold > li:before { /* :before pseudo-class is useful for putting content before each matching element */
+    content: " • "; /* Put bullets between the list items */
+}
+
+.gold > li:first-child:before {
+    content: ""; /* Suppress the bullet before the first item */
+}
+
+/** :before AND :after PSEUDO-ELEMENTS **/
+q:before {
+    content: "“"
+}
+
+q:after {
+    content: "”"
+}
+
+/** NEWSPAPER COLUMNS **/
+
+/* Don't *really* use this on poetry.  The column breaks will do bizarre things. */
+.newspaper {
+    column-width: 25em;
+    column-rule-width: thin;
+    column-rule-style: solid;
+    column-rule-color: grey;
+}
+
+blockquote {
+    margin-top: 2;
+    padding-top: 2;
+    margin-bottom: 2;
+    padding-bottom: 2;
+}
