@@ -26,10 +26,13 @@ body /* Tag selector */ {
 /* More specific than just li */
 ul li /* Ancestor selector */ {
     color: blue;
+    vertical-align: bottom;
+    line-height: normal;
 }
 
 .gold li:last-child {
     color: green;
+    float: right;
 }
 
 /* More specific than just li */
@@ -273,6 +276,13 @@ q:after {
     column-rule-width: thin;
     column-rule-style: solid;
     column-rule-color: grey;
+}
+
+.newspaper {
+    position: absolute;
+    top: 0;
+    right: 7em;
+    display: none;
 }
 
 blockquote {
