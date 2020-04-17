@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework 7, CSC 235</title>
+    <script src="Hwk7.js"></script>
+    <script>
+// Function to calculate the area of a circle
+function circleArea(radius) {
+    return Math.PI * radius ** 2;
+}
+
+// Function to insert the area of a circle into a given element
+function insertCircleArea(element, radius) {
+    element.innerHTML = 'Area: ' + circleArea(radius);
+}
+    </script>
+    <style>
+      #radius { width: 4em; }
+
+      table { border-collapse: collapse; }
+      td { text-align: right;  width: 2em; }
+      tr:first-child > td, tr:first-child > th { border-bottom: thin solid; }
+      td:first-child, th:first-child { border-right: thin solid; }
+    </style>     
+  </head>
+  <body>
+    <h2>Javascript code example For Homework</h2>
+    
+    <h3 id="script_in_head"><code>&lt;script&gt;</code> tag
+     in <code>&lt;head&gt;</code></h3>
+  
+   
+    <form>
+      <label for="radius">Radius of circle:</label>
+      <input type="number" min="0" value="1" id="radius" />
+      <span id="area_target"></span>
+      
+      <!-- For a click, 'this' refers to the element that got 
+       clicked. In this case, that's the button itself. 
+       'previousElementSibling' is the preceding sibling element 
+       (same parent in the HTML tree).  It is a property, not a 
+       method.
+       'element.querySelector(selectorString)' is a convenient 
+       way to get hold of an element to work on.  It takes a 
+       selector string using CSS selector syntax, and returns the 
+       first matching element in the HTML tree rooted at
+       'element'.  When, as here, 'element' is 'document', that
+       HTML tree is the entire page. 
+      
+       For an input element, the 'value' property is the value  
+       that has been entered into the element.-->
+      
+      <button onclick="insertCircleArea(this.previousElementSibling,
+		       document.querySelector('#radius').value);"
+	      type="button">Calculate area</button>
+    </form>
+  
+    <h3 id="script_in_body"><code>&lt;script&gt;</code> tag
+      in <code>&lt;body&gt;</code></h3>
+  
+    <!-- script tag in body can run code directly. -->
+    <form>
+      <!-- nextElementSibling is just like previousElementSibling, 
+       only looking forward instead of backward in the document. -->
+      <button
+	onclick="insertTimestamp(this.nextElementSibling);"
+	type="button">Update timestamp</button>
+      <span id="timestamp_target"></span>
+    </form>
+    <script>
+      // 'new Date()' creates a Date object set to the present time.
+      function insertTimestamp(element) {
+	  element.innerHTML = ((new Date()).toTimeString());
+      }
+      
+      insertTimestamp(document.querySelector('#timestamp_target'));
+    </script><noscript><code>
+      // 'new Date()' creates a Date object set to the present time.
+      function insertTimestamp(element) {
+	  element.innerHTML = ((new Date()).toTimeString());
+      }
+      
+      insertTimestamp(document.querySelector('#timestamp_target'));
+    </code></noscript>
+
+    <h3 id="code_in_event_handler">Code directly in event handler</h3>
+
+    <form>
+      <!-- The code for the event handler is right there in the 
+       attribute. No function is either needed or called. -->
+      <button onclick="this.innerHTML = 'I\'ve been clicked.';"
+	      type="button" id="event_handler_button">Click me!</button>
+    </form>
+
+    <h2>Javascript syntax demos</h2>
+
+    <h3 id="if">Questionable: if</h3>
+
+    <p>Do we have homework? <span id="class_answer"></span></p>
+    <script>
+      document.querySelector('#class_answer').innerHTML = makeChoice() + '.';
+    </script>
+    <noscript><code>
+      document.querySelector('#class_answer').innerHTML = makeChoice() + '.';
+    </code></noscript>
+    <h3 id="while">Indefinite loop</h3>
+    
+    <form>
+      <label for="radius">Insert table of squares less than:</label>
+      <input type="number" min="1" value="150" id="square_bound" />
+      <!-- For a form element, 'this.form' is the form it's part of. -->
+      <button
+	onclick="this.form.nextElementSibling.innerHTML
+		 = tableOfSquaresBelow(this.previousElementSibling.value);"
+	type="button">Insert squares</button>
+    </form>
+    <div id="squares_place"></div>
+    <script>
+      // Same thing the button does, except on document load instead
+      // waiting for a button press
+      document.querySelector('#squares_place').innerHTML
+        = tableOfSquaresBelow(document.querySelector('#square_bound').value);
+    </script>
+    <noscript><code>
+      // Same thing the button does, except on document load instead
+      // waiting for a button press
+      document.querySelector('#squares_place').innerHTML
+        = tableOfSquaresBelow(document.querySelector('#square_bound').value);
+    </code></noscript>
+    
+    <h3 id="for">Definite loop</h3>
+
+    <form>
+      <label for="radius">Insert table of first N Fibonacci numbers.
+	N:</label> <input type="number" min="1" value="16"
+			  id="fibonacci_n" />
+      <button
+	onclick="this.form.nextElementSibling.innerHTML
+		 = fibonacciTable(this.previousElementSibling.value);"
+	type="button">Insert Fibonaccis</button>
+    </form>
+    <div id="fibonacci_place"></div>
+    <script>
+      // Same thing the button does, except on document load.
+      document.querySelector('#fibonacci_place').innerHTML
+        = fibonacciTable(document.querySelector('#fibonacci_n').value);
+    </script>
+    <noscript><code>
+      // Same thing the button does, except on document load.
+      document.querySelector('#fibonacci_place').innerHTML
+        = tableOfSquaresBelow(document.querySelector('#fibonacci_n').value);
+    </code></noscript>
+    
+    
+  </body>
+</html>
