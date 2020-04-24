@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="Hwk8.css" />
+	<script src="Hwk8.js"></script>
+	<title>HTML forms Hwk 8, CSC 235</title>
+</head>
+
+<body>
+	<h1>HTML forms Hwk 8</h1>
+
+	<h2>GET form</h2>
+
+	<form action='https://moodle.converse.edu/CSC235/formecho.php' method='get' name="getform"
+		onsubmit="return validInput(this);">
+		<!-- A <fieldset> is used to group a set of form controls, generally
+	  		in a box.  The <legend> element sets the fieldset's title. -->
+		<fieldset class="biography">
+			<legend>Biographical information</legend>
+			<div>
+				<!-- the <div> is used to group a label and control(s) on a single line -->
+				<label for="get-name">What is your name?</label>
+				<!-- "required" attribute means this element *must* have a value
+	    			or the form won't submit -->
+				<input type="text" name="name" id="get-name" required="required" />
+				<!-- <span> is used to indicate that the control is required, and
+	    			whether it's been filled in appropriately.  For this control, CSS
+	    			is enough to figure this out.  No Javascript is needed. -->
+				<span class="flag"></span>
+			</div>
+			<div>
+				<label for="get-quest">What is your last name?</label>
+				<!-- "required" attribute means the control *must* get a value -->
+				<input type="text" name="last name" id="get-last name" required="required" />
+				<!-- Another "required" flag, set using HTML and CSS only. -->
+				<span class="flag"></span>
+			</div>
+			<div>
+				<label for="get-colormenu">What is your favorite color?</label>
+				<!-- "required" attribute on the <select> means the user has to
+	    			make a choice in order for the form to submit -->
+				<select name="colormenu" id="get-colormenu" required="required">
+					<!-- First value is default, but doesn't satisfy the 
+	    				"required" attribute on the <select> because its value is 
+						empty. -->
+					<option value="">&mdash;Please choose&mdash;</option>
+					<option class="blue">Blue</option>
+					<option class="green">Green</option>
+					<option class="red">Red</option>
+					<option class="yellow">Yellow</option>
+					<option value="AAAAAAUUUUGGGH!">Who Knows</option>
+				</select>
+				<!-- Another "required" flag set with HTML and CSS. -->
+				<span class="flag"></span>
+			</div>
+		</fieldset>
+		<fieldset class="random">
+			<legend>Random stuff</legend>
+			<div>
+				<label for="airspeed">What is the airspeed velocity of Gianna eating a orange?:</label><br />
+				<!-- The range element is used to actually *set* the airspeed. -->
+				<input id="airspeed" name="airspeed" type="range" min="0" max="12" step="0.1" list="tickmarks"
+					onchange="updateSpeed(this.value);" />
+				<!-- Read-only number element used to display the airspeed set
+	    			using the range.  Javascript ties them together, using the onchange
+	    			attribute of the range to update the number element every time the
+	    			range gets changed. -->
+				<input id="airspeed-out" type="number" readonly="readonly" value="6" /><label
+					for="airspeed-out">meters/second</label>
+				<!-- This datalist places tickmarks along the range at the given 
+	    			values.  The "label" attributes *should* place labels at the 
+	    			corresponding ticks, but the browser support isn't there yet. -->
+				<datalist id="tickmarks">
+					<option label="0">0</option>
+					<option>1</option>
+					<option>2</option>
+					<option label="3">3</option>
+					<option>4</option>
+					<option>5</option>
+					<option label="6">6</option>
+					<option>7</option>
+					<option>8</option>
+					<option label="9">9</option>
+					<option>10</option>
+					<option>11</option>
+					<option label="12">12</option>
+				</datalist>
+			</div>
+			<div class="Gianna">
+				<label>Gianna is (check <strong>at least two</strong>
+					of the following):</label>
+				<input type="checkbox" name="African" id="African"
+					onchange="buttonChecked(document.querySelectorAll('.Gianna input'), 2, document.querySelector('.Gianna .flag'))" /><label
+					for="African">African</label>
+				<input type="checkbox" name="European" id="European"
+					onchange="buttonChecked(document.querySelectorAll('.Gianna input'), 2, document.querySelector('.Gianna .flag'))" /><label
+					for="European">European</label>
+				<input type="checkbox" name="Mermaid" id="Mermaid"
+					onchange="buttonChecked(document.querySelectorAll('.Gianna input'), 2, document.querySelector('.Gianna .flag'))" /><label
+					for="dinosaur">Really a dinosaur</label>
+				<input type="checkbox" name="small" id="small"
+					onchange="buttonChecked(document.querySelectorAll('.Gianna input'), 2, document.querySelector('.Gianna .flag'))" /><label
+					for="small">Much
+					too small to carry a coconut</label>
+				<!-- There's no way to check validity of a *group* of checkboxes
+	    			in HTML.  Javascript is needed here, and Javascript must set the
+	    			flag. -->
+				<span id="checkbox-flag" class="flag"></span></div>
+			<div>
+				<label for="get-phone">What is Gianna's phone number
+					(in NNN-NNNN format)?</label>
+				<!-- "required" attribute means that the phone number is required.
+	    			The "pattern" attribute defines a pattern that the value has to
+	    			match.-->
+				<input type="tel" value="467-0861" name="phone" id="get-phone" pattern="[0-9]{3}-[0-9]{4}"
+					required="required" />
+				<!-- In this case, because the value is preset, the control
+	    			starts out in a valid state and the flag starts out with a 
+	    			green check.  Again, this flag is set using HTML and CSS. -->
+				<span class="flag"></span>
+			</div>
+			<div class="kid-name">
+				<label>Is the kid named Gianna?</label>
+				<!-- Adding the "required" attribute to a single radio button
+	    			in a group is enough to require that one of the buttons in the
+	    			group has to be checked (not necessarily the one with the
+	    			"required" attribute).  The recommended procedure is to put the
+	    			"required" attribute on *all* the radio buttons in a group, to make
+	    			clear that there's nothing special about any particular button. -->
+				<input type="radio" value="yes" name='birdname' id="get-birdname-y"
+					required="required" /><label>Yes</label>
+				<input type="radio" value="no" name='birdname' id="get-birdname-n"
+					required="required" /><label>No</label>
+				<!-- Another "required" flag, set using HTML and CSS -->
+				<span class="flag"></span>
+			</div>
+		</fieldset>
+		<div class="legal">
+			<!-- "required" attribute here indicates that *this* checkbox has
+	  			to be checked for the form to submit. -->
+			<input type="checkbox" name="legal" id="get-legal" required="required" />
+			<!-- Another "required" flag, set using HTML and CSS -->
+			<span class="flag"></span>
+			<label for="get-legal">I have read and agreed to the terms that nobody ever actually reads and skips over and don't realize 
+            that they're signing a contract.</label>
+		</div>
+		<div>
+			<input type="reset" />
+			<input type="submit" value='Submit!' />
+		</div>
+	</form>
+
+	<ul class="explanations">
+		<li><span class="flag"></span> Required or invalid input (hover over control for explanation)</li>
+		<li><span class="flag valid"></span> Valid input</li>
+	</ul>
+</body>
+
+</html>
