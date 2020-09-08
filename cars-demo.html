@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="cars-demo.css" />
+	<script src="cars-demo.js"></script>
+    <title>Cars forms demo, CSC 235</title>
+    <style>
+		body {
+			background-color: rgb(240, 204, 128);         
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Dream Car demo</h1>
+
+	<h2>Typical Dream Cars</h2>
+<div>
+				<label for="get-favcar">What is your dream car?</label>
+				<!-- "required" attribute on the <select> means the user has to
+	    			make a choice in order for the form to submit -->
+				<select name="favcar" id="favcar" required="required">
+					<!-- First value is default, but doesn't satisfy the 
+	    				"required" attribute on the <select> because its value is 
+						empty. -->
+					<option value="">&mdash;Please choose&mdash;</option>
+					<option class="green">Lamborghini Aventador</option>
+					<option class="silver">Porsche 911</option>
+					<option class="red">Porsche Carrera GT</option>
+					<option class="blue">Lamborghini Gallardo</option>
+					<option value="UHHHHOHHHH!">I don't know</option>
+				</select>
+				<!-- Another "required" flag set with HTML and CSS. -->
+				<span class="flag"></span>
+			</div>
+            <div>
+                <input type="reset" />
+                <input type="submit" value='Submit.' /><br />
+                <input type="button" value="Suppress the favcar!"
+                    onclick="togglefavcar(this);" /><br />
+                <input type="button" value="Release the favcar!" 
+                    onclick="createfavcar(this);" />
+			</div>
+		</body>
+
+		</html>

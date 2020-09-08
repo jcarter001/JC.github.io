@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+/* Give the options in the color dropdown appropriate background colors */
+.green { background-color: lightgreen; }
+.silver { background-color: silver; }
+.red { background-color: rgb(250, 17, 75); }  
+.blue { background-color: rgb(116, 114, 241); } 
