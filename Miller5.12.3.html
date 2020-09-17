@@ -1,0 +1,33 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <script>
+            function incrementCount() {
+                let spanElt = document.getElementById('count').querySelector('span')
+                let oldCount = parseInt(spanElt.innerText);
+                //alert(oldCount);
+                let newCount = oldCount + 1;
+                spanElt.innerText = (newCount).toString();
+
+                // Update the font size
+                let fontSize = 100 + 10 * newCount;
+                spanElt.style.fontSize = fontSize.toString() + '%';
+                let listElt = document.createElement('li')
+                listElt.innerText = (newCount).toString()
+                document.getElementById('Count').appendChild(listElt);
+            }
+        </script>
+    </head>
+    <body>
+        <p id="count">The button has been pressed <span>0</span> times.</p>
+        <form onsubmit="return false;">
+            <button onclick="incrementCount();">Click me!</button>
+            </form>
+
+        <ul  id="Count">
+            <li> 0 </li>
+        </ul>
+
+    </body>      
+</html>
+© 2020 GitHub, Inc.
